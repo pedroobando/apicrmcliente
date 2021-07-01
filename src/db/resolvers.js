@@ -184,13 +184,12 @@ const resolvers = {
     nuevoUsuario: async (__, { usuario }) => {
       const { email, password } = usuario;
 
+      // Revisar si el usuario existe
+      const usuarioExiste = await Usuario.findOne({ email });
+      if (usuarioExiste) {
+        throw new Error(`El email ${email} ya esta registrado.`);
+      }
       try {
-        // Revisar si el usuario existe
-        const usuarioExiste = await Usuario.findOne({ email });
-        if (usuarioExiste) {
-          throw new Error(`El email ${email} ya esta registrado.`);
-        }
-
         // Hashear su password
         const salt = await bcryptjs.genSalt(10);
         usuario.password = await bcryptjs.hash(password, salt);
