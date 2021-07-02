@@ -1,6 +1,5 @@
 const { ApolloServer } = require('apollo-server');
 
-const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
