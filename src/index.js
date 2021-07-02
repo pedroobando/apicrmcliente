@@ -16,14 +16,15 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
+    // console.log(req.headers);
     // console.log(req.header['authorization']);
-    const token = req.headers['authorization'] || '';
+    const token = req.headers['authorization'] || null;
     if (token) {
       try {
         const usuario = jwt.verify(token, process.env.SECRETA);
         return { usuario };
       } catch (error) {
-        console.log(error, 'Token');
+        console.log('Error en Token');
       }
     }
   },
