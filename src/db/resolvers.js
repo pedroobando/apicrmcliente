@@ -15,7 +15,8 @@ const crearToken = (usuario, secret, expiresIn) => {
 
 const resolvers = {
   Query: {
-    obtenerUsuario: async (_, {}, ctx) => {
+    obtenerUsuario: (_, {}, ctx) => {
+      // console.log(ctx.usuario);
       return ctx.usuario;
       // try {
       //   const usuarioId = await jwt.verify(token, process.env.SECRETA);

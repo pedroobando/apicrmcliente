@@ -22,6 +22,7 @@ const ClienteSchema = Schema({
   },
   telefono: {
     ...dataTypeDefault,
+    required: false,
   },
   vendedor: {
     type: Schema.Types.ObjectId,
