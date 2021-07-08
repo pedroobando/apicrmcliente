@@ -290,6 +290,13 @@ const resolvers = {
         throw new Error('No tiene las credenciales');
       }
 
+      const { email } = input;
+      const existeCliente = await Cliente.findOne({ email });
+      if (!!existeCliente && existeCliente.id !== id)
+        throw new Error(
+          `Email ${email} registrado ya en cliente ${existeCliente.nombre} ${existeCliente.apellido}.`
+        );
+
       cliente = await Cliente.findByIdAndUpdate(id, input, { new: true });
       return cliente;
     },
