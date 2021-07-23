@@ -88,8 +88,8 @@ const typeDefs = gql`
 
   type PedidoGrupo {
     id: ID
-    producto: ID
     cantidad: Int
+    producto: ID
     precio: Float
   }
 
