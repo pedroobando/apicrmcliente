@@ -31,6 +31,7 @@ const typeDefs = gql`
   input PedidoProductoInput {
     producto: ID!
     cantidad: Int
+    precio: Float
   }
 
   input PedidoInput {
