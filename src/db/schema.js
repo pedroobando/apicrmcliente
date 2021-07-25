@@ -64,6 +64,7 @@ const typeDefs = gql`
     id: ID
     nombre: String
     apellido: String
+    nombreCompleto: String
     empresa: String
     email: String
     telefono: String
