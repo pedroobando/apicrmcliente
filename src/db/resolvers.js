@@ -93,7 +93,9 @@ const resolvers = {
     },
 
     obtenerPedidosVendedor: async (_, {}, ctx) => {
-      const listaPedidos = await Pedido.find({ vendedor: ctx.usuario.id });
+      const listaPedidos = await Pedido.find({ vendedor: ctx.usuario.id }).populate(
+        'cliente'
+      );
       if (!listaPedidos) {
         throw new Error(`El vendedor no tiene pedidos registrados.`);
       }
@@ -348,7 +350,8 @@ const resolvers = {
         } else {
           // Resta la cantidad a lo disponible
           producto.existencia = producto.existencia - articulo.cantidad;
-          await Producto.findByIdAndUpdate(producto.producto, producto);
+          await producto.save();
+          // await Producto.findByIdAndUpdate(producto.producto, producto);
         }
 
         articulo.precio = producto.precio;

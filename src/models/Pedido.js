@@ -6,6 +6,11 @@ const PedidoGrupoSchema = Schema({
     required: true,
     ref: 'Producto',
   },
+  nombre: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   cantidad: {
     type: Number,
     required: true,
@@ -23,6 +28,7 @@ const PedidoSchema = Schema({
   total: {
     type: Number,
     required: true,
+    default: 0,
   },
   cliente: {
     type: Schema.Types.ObjectId,

@@ -29,15 +29,15 @@ const typeDefs = gql`
   }
 
   input PedidoProductoInput {
-    producto: ID!
     cantidad: Int
+    producto: ID!
+    nombre: String
     precio: Float
   }
 
   input PedidoInput {
     pedido: [PedidoProductoInput!]
     cliente: ID!
-    estado: EstadoPedido
   }
 
   type Token {
@@ -75,7 +75,7 @@ const typeDefs = gql`
     id: ID
     pedido: [PedidoGrupo!]
     total: Float
-    cliente: ID
+    cliente: Cliente
     vendedor: ID
     fecha: String
     estado: EstadoPedido
@@ -91,6 +91,7 @@ const typeDefs = gql`
     id: ID
     cantidad: Int
     producto: ID
+    nombre: String
     precio: Float
   }
 
